@@ -15,6 +15,10 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
     });
   }, [scrollY]);
 
+  const handleTryLiveDemo = () => {
+    window.open('https://demo.arraylink.ai', '_blank');
+  };
+
   return (
     <motion.nav
       className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
@@ -37,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
             className="w-10 h-10 object-contain"
           />
           <span className="text-3xl font-bold text-white tracking-wider">
-            ArrayLink
+            ArrayLink AI
           </span>
         </motion.div>
 
@@ -51,6 +55,14 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
             onClick={onBookDemo}
           >
             Book a Demo
+          </motion.button>
+          <motion.button
+            className="bg-transparent border border-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-600/10 transition-colors"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleTryLiveDemo}
+          >
+            Try Live Demo
           </motion.button>
         </div>
 
