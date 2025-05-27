@@ -129,13 +129,8 @@ const Section: React.FC<SectionProps> = ({ children, className = '', delay = 0, 
 };
 
 const App: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleBookDemo = () => {
     setIsCalendlyOpen(true);
@@ -236,35 +231,55 @@ const App: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gradient">
               Voice AI for Every Need
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {[
                 {
-                  icon: <FaHotel className="w-12 h-12 text-blue-400" />,
+                  icon: (
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20 12V22H4V12M22 7H2V12H22V7ZM12 22V7M12 7H7.5C6.67157 7 6 6.32843 6 5.5V3.5C6 2.67157 6.67157 2 7.5 2H16.5C17.3284 2 18 2.67157 18 3.5V5.5C18 6.32843 17.3284 7 16.5 7H12Z" stroke="#60A5FA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  ),
                   title: "Hotel Reorder Assistant",
                   description: "Automate inventory management with AI-powered voice calls"
                 },
                 {
-                  icon: <FaPhone className="w-12 h-12 text-blue-400" />,
+                  icon: (
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.4017 20.9018 21 20.2827 21 19.5258V15.6488C21 14.9175 20.4491 14.3031 19.7272 14.1988L16.5742 13.7206C15.9272 13.6263 15.2988 13.9236 14.9699 14.4746L14.0368 16.0645C12.2306 15.0864 10.7136 13.5694 9.73545 11.7632L11.3254 10.8301C11.8764 10.5012 12.1737 9.87282 12.0794 9.22583L11.6012 6.07275C11.4969 5.35087 10.8825 4.8 10.1512 4.8H6.27419C5.51731 4.8 4.89824 5.39827 4.84187 6.15172C4.81413 6.53086 4.8 6.91384 4.8 7.3C4.8 8.37849 4.95049 9.42004 5.23019 10.4025" stroke="#60A5FA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  ),
                   title: "AI Sales Caller",
                   description: "Scale your sales outreach with natural-sounding AI agents"
                 },
                 {
-                  icon: <FaHeadset className="w-12 h-12 text-blue-400" />,
+                  icon: (
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 6.75H7.75C6.64543 6.75 5.75 7.64543 5.75 8.75V17.25C5.75 18.3546 6.64543 19.25 7.75 19.25H16.25C17.3546 19.25 18.25 18.3546 18.25 17.25V8.75C18.25 7.64543 17.3546 6.75 16.25 6.75H15M9 6.75V5.75C9 4.64543 9.89543 3.75 11 3.75H13C14.1046 3.75 15 4.64543 15 5.75V6.75M9 6.75H15" stroke="#60A5FA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M9.75 11.75C9.75 12.3023 9.30228 12.75 8.75 12.75C8.19772 12.75 7.75 12.3023 7.75 11.75C7.75 11.1977 8.19772 10.75 8.75 10.75C9.30228 10.75 9.75 11.1977 9.75 11.75Z" fill="#60A5FA"/>
+                      <path d="M9.75 15.75C9.75 16.3023 9.30228 16.75 8.75 16.75C8.19772 16.75 7.75 16.3023 7.75 15.75C7.75 15.1977 8.19772 14.75 8.75 14.75C9.30228 14.75 9.75 15.1977 9.75 15.75Z" fill="#60A5FA"/>
+                      <path d="M13.75 11.75C13.75 12.3023 13.3023 12.75 12.75 12.75C12.1977 12.75 11.75 12.3023 11.75 11.75C11.75 11.1977 12.1977 10.75 12.75 10.75C13.3023 10.75 13.75 11.1977 13.75 11.75Z" fill="#60A5FA"/>
+                      <path d="M13.75 15.75C13.75 16.3023 13.3023 16.75 12.75 16.75C12.1977 16.75 11.75 16.3023 11.75 15.75C11.75 15.1977 12.1977 14.75 12.75 14.75C13.3023 14.75 13.75 15.1977 13.75 15.75Z" fill="#60A5FA"/>
+                      <path d="M17.75 11.75C17.75 12.3023 17.3023 12.75 16.75 12.75C16.1977 12.75 15.75 12.3023 15.75 11.75C15.75 11.1977 16.1977 10.75 16.75 10.75C17.3023 10.75 17.75 11.1977 17.75 11.75Z" fill="#60A5FA"/>
+                      <path d="M17.75 15.75C17.75 16.3023 17.3023 16.75 16.75 16.75C16.1977 16.75 15.75 16.3023 15.75 15.75C15.75 15.1977 16.1977 14.75 16.75 14.75C17.3023 14.75 17.75 15.1977 17.75 15.75Z" fill="#60A5FA"/>
+                    </svg>
+                  ),
                   title: "Support Voice Bot",
                   description: "Provide 24/7 customer support with intelligent voice automation"
                 }
               ].map((useCase, index) => (
                 <motion.div
                   key={index}
-                  className="p-8 rounded-xl card-bg glass-effect card-hover"
+                  className="p-8 rounded-xl bg-[#080B14] hover:bg-[#0C1018] transition-colors duration-300"
                   variants={fadeInUp}
                   custom={index * 0.1}
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                 >
-                  <div className="mb-6 floating">{useCase.icon}</div>
-                  <h3 className="text-2xl font-semibold mb-4 text-blue-50">{useCase.title}</h3>
-                  <p className="text-blue-200/70 text-lg">{useCase.description}</p>
+                  <div className="mb-8">
+                    {useCase.icon}
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-3 text-white">{useCase.title}</h3>
+                  <p className="text-gray-400 text-lg leading-relaxed">{useCase.description}</p>
                 </motion.div>
               ))}
             </div>
