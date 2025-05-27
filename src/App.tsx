@@ -136,7 +136,7 @@ const App: React.FC = () => {
   };
 
   const handleTryLiveDemo = () => {
-    window.open('https://www.google.com', '_blank');
+    window.open('/sales-agent', '_blank');
   };
 
   if (isLoading) {
