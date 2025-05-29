@@ -177,7 +177,7 @@ const App: React.FC = () => {
         />
 
         {/* Hero Section */}
-        <Section className="min-h-screen flex items-center justify-center text-center relative overflow-hidden pt-20">
+        <Section className="min-h-screen flex items-center justify-center text-center relative overflow-hidden pt-32">
           <div className="absolute inset-0 animated-gradient"></div>
           <HeroImage />
           <Sphere3D />
@@ -188,27 +188,49 @@ const App: React.FC = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
             >
-              <motion.h1 
-                className="text-4xl md:text-7xl font-bold mb-6 text-gradient"
+              <motion.div
+                className="mb-2 flex gap-4 justify-center"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  visible: { transition: { staggerChildren: 0.7 } },
+                  hidden: {},
+                }}
+              >
+                <motion.span
+                  className="text-4xl md:text-6xl font-bold text-gradient"
+                  variants={{ hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0, transition: { duration: 1.2 } } }}
+                >
+                  Remind.
+                </motion.span>
+                <motion.span
+                  className="text-4xl md:text-6xl font-bold text-gradient"
+                  variants={{ hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0, transition: { duration: 1.2 } } }}
+                >
+                  Reorder.
+                </motion.span>
+                <motion.span
+                  className="text-4xl md:text-6xl font-bold text-gradient"
+                  variants={{ hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0, transition: { duration: 1.2 } } }}
+                >
+                  Restock.
+                </motion.span>
+              </motion.div>
+              <motion.div
+                className="text-lg md:text-2xl text-blue-100/80 mb-6"
                 variants={fadeInUp}
               >
-                Voice-Powered E-commerce, Reimagined
-              </motion.h1>
-              <motion.p 
-                className="text-xl md:text-2xl text-blue-100/80 mb-12"
-                variants={fadeInUp}
-              >
-                AI agents that navigate your e-commerce like humans, enabling customers to order supplies through natural conversation - no screen time needed.
-              </motion.p>
+                Voice Powered AI sales agents that call your customers, suggest what they need, and place the order—no screens, no apps, just real conversations.
+              </motion.div>
             </motion.div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
               <motion.button
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center w-full sm:w-auto"
+                className="bg-transparent border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center justify-center w-full sm:w-auto"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleBookDemo}
               >
-                Book a Demo
+                Talk to our team
                 <FaArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.button
@@ -325,12 +347,12 @@ const App: React.FC = () => {
         <Section className="relative" delay={0.8}>
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-blue-400/10 opacity-90"></div>
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">Experience The Future of Ordering</h2>
-            <p className="text-xl text-blue-100/80 mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">Experience The Future of Ordering</h2>
+            <p className="text-base text-blue-100/80 mb-8">
               Let your customers order supplies through natural conversations - anytime, anywhere
             </p>
             <motion.button
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg text-xl font-semibold hover:bg-blue-50 transition-all duration-300 group hover-lift"
+              className="bg-white text-blue-600 px-5 py-2 rounded-lg text-base font-semibold hover:bg-blue-50 transition-all duration-300 group hover-lift"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleBookDemo}
@@ -340,22 +362,6 @@ const App: React.FC = () => {
             </motion.button>
           </div>
         </Section>
-
-        {/* Mobile CTA */}
-        <motion.div
-          className="fixed bottom-0 left-0 right-0 bg-[#0B1120] p-4 border-t border-blue-900/20 sm:hidden"
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <motion.button
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold"
-            whileTap={{ scale: 0.98 }}
-            onClick={handleBookDemo}
-          >
-            Book a Demo
-          </motion.button>
-        </motion.div>
       </div>
     </AnimatePresence>
   );

@@ -34,17 +34,12 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
           <img 
             src="/assets/logo.png" 
             alt="ArrayLink Logo" 
-            className="w-10 h-10 object-contain"
+            className="w-12 h-12 object-contain"
           />
-          <span className="text-3xl font-bold text-white tracking-wider">
-            ArrayLink AI
+          <span className="text-2xl font-bold text-white tracking-wider">
+            Arraylink AI
           </span>
         </motion.div>
-
-        <div className="hidden md:flex items-center space-x-8">
-          <NavLink href="#features">Features</NavLink>
-          <NavLink href="#demo">Demo</NavLink>
-        </div>
 
         <motion.button
           className="md:hidden text-white"
