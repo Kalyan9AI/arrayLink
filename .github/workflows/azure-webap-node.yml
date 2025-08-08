@@ -47,8 +47,23 @@ jobs:
           # Create build directory and copy build files
           mkdir -p build
           cp -r ../build/* build/
-        
-      - name: 'Deploy to Azure Web App'
+      
+      - name: Deploy to Azure Web App
+        id: deploy1
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZUREWEBAPP_PUBLISHPROFILE }}
+          package: deployment
+
+      - name: Wait before retry
+        if: failure()
+        run: |
+          echo "First deploy failed, waiting 30s before retry..."
+          sleep 30
+
+      - name: Deploy to Azure Web App (retry)
+        if: failure()
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
