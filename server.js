@@ -2,10 +2,19 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+require('dotenv').config();
 const app = express();
 
 const buildDir = path.join(__dirname, 'build');
 const buildVersion = process.env.BUILD_VERSION || Math.floor(Date.now() / 1000).toString();
+
+function appendVersionToAssetUrls(html, version) {
+  // Append ?v=version to CSS and JS asset URLs in the HTML
+  // Only appends when the attribute ends with .css or .js (no existing query)
+  html = html.replace(/(href="[^"]+\.css)"/g, `$1?v=${version}"`);
+  html = html.replace(/(src="[^"]+\.js)"/g, `$1?v=${version}"`);
+  return html;
+}
 
 // Serve static files from the React app build directory with sensible cache headers
 app.use((req, res, next) => {
@@ -47,6 +56,7 @@ app.get('*', function(req, res) {
   try {
     let html = fs.readFileSync(indexPath, 'utf8');
     html = html.replace(/__BUILD_VERSION__/g, buildVersion);
+    html = appendVersionToAssetUrls(html, buildVersion);
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');

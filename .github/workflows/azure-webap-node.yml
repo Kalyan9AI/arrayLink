@@ -14,6 +14,7 @@ concurrency:
 env:
   AZURE_WEBAPP_NAME: arraylink
   NODE_VERSION: '20.x'
+  BUILD_VERSION: ${{ github.sha }}
 
 jobs:
   build-and-deploy:
@@ -47,6 +48,8 @@ jobs:
           # Create build directory and copy build files
           mkdir -p build
           cp -r ../build/* build/
+          # Save build version for runtime awareness
+          echo "BUILD_VERSION=${BUILD_VERSION}" >> .env
       
       - name: Deploy to Azure Web App
         id: deploy1
