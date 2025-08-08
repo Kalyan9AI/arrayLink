@@ -136,7 +136,7 @@ const App: React.FC = () => {
   };
 
   const handleTryLiveDemo = () => {
-    window.open('https://sales-agent-c3f5ecevdefjcafc.canadacentral-01.azurewebsites.net/', '_blank');
+    window.open('https://arraylink.ai/demo', '_blank');
   };
 
   if (isLoading) {
