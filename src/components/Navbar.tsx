@@ -40,6 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
             Arraylink AI
           </span>
         </motion.div>
+        <div className="hidden md:flex items-center gap-6">
+          <NavLink href="/greetings">Greetings</NavLink>
+        </div>
 
         <motion.button
           className="md:hidden text-white"
