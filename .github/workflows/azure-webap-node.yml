@@ -56,7 +56,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZUREWEBAPP_PUBLISHPROFILE }}
+          publish-profile: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_BAY_01A84F80F }}
           package: deployment
 
       - name: Wait before retry
@@ -70,5 +70,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZUREWEBAPP_PUBLISHPROFILE }}
+          publish-profile: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_BAY_01A84F80F }}
           package: deployment 
