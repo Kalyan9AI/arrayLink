@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  AZURE_WEBAPP_NAME: arraylink
+  AZURE_WEBAPP_NAME: arraylinkai
   NODE_VERSION: '20.x'
   BUILD_VERSION: ${{ github.sha }}
 
